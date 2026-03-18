@@ -1,26 +1,29 @@
 {
-  "name": "founderz",
+  "name": "founderz-monorepo",
   "version": "0.1.0",
   "private": true,
+  "workspaces": [
+    "apps/*",
+    "backend",
+    "libs/*"
+  ],
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "eslint"
+    "dev": "npm run dev:web",
+    "dev:web": "npm run dev -w @founderz/web",
+    "dev:backend": "npm run dev -w @founderz/backend",
+    "build": "npm run build:web && npm run build:backend",
+    "build:web": "npm run build -w @founderz/web",
+    "build:backend": "npm run build -w @founderz/backend",
+    "lint": "npm run lint:web && npm run lint:backend",
+    "lint:web": "npm run lint -w @founderz/web",
+    "lint:backend": "npm run lint -w @founderz/backend",
+    "typecheck": "npm run typecheck -w @founderz/web && npm run typecheck -w @founderz/backend",
+    "check": "npm run lint && npm run typecheck"
   },
-  "dependencies": {
-    "next": "16.1.7",
-    "react": "19.2.3",
-    "react-dom": "19.2.3"
+  "engines": {
+    "node": ">=20.0.0"
   },
   "devDependencies": {
-    "@tailwindcss/postcss": "^4",
-    "@types/node": "^20",
-    "@types/react": "^19",
-    "@types/react-dom": "^19",
-    "eslint": "^9",
-    "eslint-config-next": "16.1.7",
-    "tailwindcss": "^4",
     "typescript": "^5"
   }
 }

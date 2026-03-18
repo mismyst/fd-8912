@@ -16,9 +16,17 @@
 # next.js
 /.next/
 /out/
+apps/*/.next/
+apps/*/out/
 
 # production
 /build
+backend/dist/
+
+# workspaces
+apps/*/node_modules/
+backend/node_modules/
+libs/*/node_modules/
 
 # misc
 .DS_Store
